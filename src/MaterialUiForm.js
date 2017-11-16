@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Checkbox from 'material-ui/Checkbox'
-import FlatButton from 'material-ui/FlatButton';
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import asyncValidate from './asyncValidate'
@@ -127,7 +126,7 @@ const MaterialUiForm = props => {
         />
       </div>
       <div>
-        <button type="submit" primary={true} disabled={pristine || submitting}>
+        <button type="submit" disabled={pristine || submitting}>
           Submit
         </button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>

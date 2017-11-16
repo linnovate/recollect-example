@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios';
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
@@ -17,11 +18,18 @@ const store = (window.devToolsExtension
 
 const showResults = values =>
   new Promise(resolve => {
-    setTimeout(() => {
-      // simulate server latency
-      window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
-      resolve()
-    }, 500)
+    // setTimeout(() => {
+    //   // simulate server latency
+    //   window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
+    //   resolve()
+    // }, 500)
+    axios.post('/send', values)
+    .then((response) => {
+      resolve();
+    })
+    .catch((error) => {
+      console.log(error, 'error sending event', error);
+    });
   })
 
 let render = () => {

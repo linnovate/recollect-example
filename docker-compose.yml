@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  recollect-example:
+    image: recollect-example
+    build:
+      context: .
+    working_dir: /usr/src/app
+    ports:
+      - "3030:3030"
+    command: npm start
+    restart: always
+    environment:
+      - RECOLLECT_API=http://api:3005/api/create
+    

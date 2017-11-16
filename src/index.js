@@ -23,6 +23,7 @@ const showResults = values =>
     //   window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
     //   resolve()
     // }, 500)
+    values.type = 'bid';
     axios.post('/send', values)
     .then((response) => {
       resolve();

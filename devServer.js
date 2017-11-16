@@ -2,10 +2,16 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var request = require('request');
+var bodyParser = require('body-parser');
 var config = require('./webpack.config.dev')
 
 var app = express()
 var compiler = webpack(config)
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
 
 app.use(
   require('webpack-dev-middleware')(compiler, {
